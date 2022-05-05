@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:workout/screens/homescreen.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({Key? key}) : super(key: key);
@@ -185,12 +186,20 @@ class _OnBoardingState extends State<OnBoarding> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Skip",
-                        style: GoogleFonts.lato(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w500,
-                          color: const Color.fromARGB(255, 218, 209, 209),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomeScreen()));
+                        },
+                        child: Text(
+                          "Skip",
+                          style: GoogleFonts.lato(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w500,
+                            color: const Color.fromARGB(255, 218, 209, 209),
+                          ),
                         ),
                       ),
                       // const Icon(
@@ -198,23 +207,32 @@ class _OnBoardingState extends State<OnBoarding> {
                       //   color: Colors.white,
                       //   size: 17.0,
                       // ),
-                      Container(
-                          width: MediaQuery.of(context).size.width / 3,
-                          height: MediaQuery.of(context).size.height / 17,
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 214, 5, 5),
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Next",
-                              style: GoogleFonts.lato(
-                                fontSize: 15.0,
-                                fontWeight: FontWeight.w600,
-                                color: const Color.fromARGB(255, 255, 255, 255),
-                              ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomeScreen()));
+                        },
+                        child: Container(
+                            width: MediaQuery.of(context).size.width / 3,
+                            height: MediaQuery.of(context).size.height / 17,
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 214, 5, 5),
+                              borderRadius: BorderRadius.circular(8),
                             ),
-                          )),
+                            child: Center(
+                              child: Text(
+                                "Next",
+                                style: GoogleFonts.lato(
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w600,
+                                  color:
+                                      const Color.fromARGB(255, 255, 255, 255),
+                                ),
+                              ),
+                            )),
+                      ),
                     ],
                   ),
                 )
