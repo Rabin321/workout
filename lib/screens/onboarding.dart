@@ -10,12 +10,28 @@ class OnBoarding extends StatefulWidget {
 }
 
 class _OnBoardingState extends State<OnBoarding> {
+  bool tick = false;
   final List levels = ["Beginner", "Intermediate", "Professional"];
   final List subtitle = [
     "Get started with the basics",
     "Get up to speed",
     "Get the most out of this"
   ];
+
+  // final IconButton icon1 = IconButton(
+  //   icon: const Icon(
+  //     isPressed ? Icons.check_box_outlined : Icons.checkbox_outline_blank,
+  //   ),
+  //   onPressed: () {
+
+  //   },
+  // );
+  // final Icon icon2 = const Icon(
+  //   Icons.check_box_outlined,
+  //   color: Colors.green,
+  //   size: 32,
+  // );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +51,7 @@ class _OnBoardingState extends State<OnBoarding> {
           image: DecorationImage(
               image: AssetImage("assets/1.jpg"),
               fit: BoxFit.cover,
-              opacity: 0.3),
+              opacity: 0.4),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -97,7 +113,7 @@ class _OnBoardingState extends State<OnBoarding> {
                     style: TextStyle(
                       fontSize: 33.0,
                       fontWeight: FontWeight.w700,
-                      color: const Color.fromARGB(255, 255, 7, 7),
+                      color: Color.fromARGB(255, 255, 7, 7),
                     ),
                   ),
                 ),
@@ -114,6 +130,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 Padding(
                   padding:
                       const EdgeInsets.only(left: 20.0, top: 10.0, right: 20.0),
+                  // ignore: sized_box_for_whitespace
                   child: Container(
                     // color: const Color.fromARGB(255, 211, 6, 6),
                     width: MediaQuery.of(context).size.width,
@@ -135,30 +152,57 @@ class _OnBoardingState extends State<OnBoarding> {
                               ),
                               child: Padding(
                                 padding:
-                                    const EdgeInsets.only(left: 8.0, top: 25),
+                                    const EdgeInsets.only(left: 8.0, top: 15),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      "I am",
-                                      style: GoogleFonts.lato(
-                                        fontSize: 28.0,
-                                        fontWeight: FontWeight.w700,
-                                        color: const Color.fromARGB(
-                                            255, 255, 7, 7),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      levels[index],
-                                      style: GoogleFonts.lato(
-                                        fontSize: 28.0,
-                                        fontWeight: FontWeight.w700,
-                                        color: const Color.fromARGB(
-                                            255, 255, 7, 7),
-                                      ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 130.0,
+                                          ),
+                                          child: InkWell(
+                                            child: Icon(
+                                              tick
+                                                  ? Icons.check_box_outlined
+                                                  : Icons
+                                                      .check_box_outline_blank,
+                                              color: Colors.white,
+                                              size: 30,
+                                            ),
+                                            onTap: () {
+                                              print("pressed");
+                                              setState(() {
+                                                tick = !tick;
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                        Text(
+                                          "I am",
+                                          style: GoogleFonts.lato(
+                                            fontSize: 28.0,
+                                            fontWeight: FontWeight.w700,
+                                            color: const Color.fromARGB(
+                                                255, 255, 7, 7),
+                                          ),
+                                        ),
+                                        // const SizedBox(
+                                        //   height: 5,
+                                        // ),
+                                        Text(
+                                          levels[index],
+                                          style: GoogleFonts.lato(
+                                            fontSize: 28.0,
+                                            fontWeight: FontWeight.w700,
+                                            color: const Color.fromARGB(
+                                                255, 255, 7, 7),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                     const SizedBox(
                                       height: 10,
@@ -166,7 +210,7 @@ class _OnBoardingState extends State<OnBoarding> {
                                     Text(
                                       subtitle[index],
                                       style: GoogleFonts.lato(
-                                        fontSize: 14.0,
+                                        fontSize: 16.0,
                                         fontWeight: FontWeight.w400,
                                         color: const Color.fromARGB(
                                             255, 255, 255, 255),
